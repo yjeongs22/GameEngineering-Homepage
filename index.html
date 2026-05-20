@@ -105,29 +105,7 @@
             },
         }
     </script>
-    <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            vertical-align: middle;
-        }
-
-        .hero-gradient {
-            background: linear-gradient(to right, rgba(0, 23, 54, 0.9) 0%, rgba(0, 23, 54, 0.4) 100%);
-        }
-
-        .bento-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .bento-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.08);
-        }
-
-        .text-glow {
-            text-shadow: 0 0 10px rgba(60, 215, 255, 0.5);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body
@@ -673,34 +651,7 @@
             </div>
         </div>
     </footer>
-    <script>
-        function toggleFaq(button) {
-            const content = button.nextElementSibling;
-            const icon = button.querySelector('.material-symbols-outlined');
-
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.style.transform = 'rotate(180deg)';
-            } else {
-                content.classList.add('hidden');
-                icon.style.transform = 'rotate(0deg)';
-            }
-        }
-
-        // Simple scroll reveal effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('py-2');
-                nav.classList.remove('h-20');
-                nav.classList.add('h-16');
-            } else {
-                nav.classList.remove('py-2');
-                nav.classList.add('h-20');
-                nav.classList.remove('h-16');
-            }
-        });
-    </script>
+    <script src="main.js"></script>
 
 
 </body>
