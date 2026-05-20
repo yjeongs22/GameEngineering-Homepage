@@ -1,13 +1,708 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html class="light" lang="ko" style="">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Engineering Homepage</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>게임공학과 | Department of Game Engineering</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c4c6d0",
+                        "surface": "#f7f9fb",
+                        "tertiary": "#001a21",
+                        "surface-bright": "#f7f9fb",
+                        "inverse-primary": "#a9c7ff",
+                        "background": "#f7f9fb",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#d6e3ff",
+                        "on-surface": "#191c1e",
+                        "on-secondary-container": "#fefcff",
+                        "surface-container-high": "#e6e8ea",
+                        "inverse-surface": "#2d3133",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#00a0c1",
+                        "on-background": "#191c1e",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-low": "#f2f4f6",
+                        "primary": "#001736",
+                        "on-primary-fixed": "#001b3d",
+                        "secondary": "#0051d5",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#405f91",
+                        "tertiary-fixed": "#b4ebff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#264778",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "on-tertiary-fixed": "#001f27",
+                        "outline": "#747780",
+                        "surface-container": "#eceef0",
+                        "on-secondary-fixed": "#00174b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-container": "#316bf3",
+                        "primary-container": "#002b5b",
+                        "secondary-fixed": "#dbe1ff",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary-container": "#7594ca",
+                        "on-surface-variant": "#43474f",
+                        "tertiary-fixed-dim": "#3cd7ff",
+                        "tertiary-container": "#00303c",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#004e5f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "mono-label": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "mono-label": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.7", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "1.5", "fontWeight": "600" }],
+                        "label-sm": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(0, 23, 54, 0.9) 0%, rgba(0, 23, 54, 0.4) 100%);
+        }
+
+        .bento-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.08);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 10px rgba(60, 215, 255, 0.5);
+        }
+    </style>
 </head>
-<body>
-    <h1>Hello, Game Engineering!</h1>
-    <script src="main.js"></script>
+
+<body
+    class="bg-background text-on-background font-body-md selection:bg-secondary-fixed-dim selection:text-on-secondary-fixed">
+    <!-- Top Navigation Bar -->
+    <nav
+        class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-300">
+        <div class="max-w-container-max mx-auto px-margin-desktop flex justify-between items-center h-20">
+            <a class="font-title-md text-title-md font-bold text-primary" href="#">게임공학과</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors"
+                    href="#about">학과소개</a>
+                <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors"
+                    href="#strengths">교육과정</a>
+                <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors"
+                    href="#tracks">연구분야</a>
+                <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors"
+                    href="#projects">프로젝트</a>
+                <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#faq">FAQ</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-label-sm hover:opacity-90 transition-opacity">입학안내</button>
+                <button class="md:hidden text-primary">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="relative h-[90vh] min-h-[600px] flex items-center overflow-hidden pt-20">
+        <div class="absolute inset-0 z-0">
+            <img alt="학과 전경" class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwcFNxvFl9yxABEWYEkJ0dPbRwoWS8JdQCVv5qLw4jo-xStknYvaV0yyxeYobcuTUeBMfD5JPaHp-p4gXLtkpHvFR7QWZvpiMmfy3YylAo1XHClKN3fmSIEf6kTM0ISZ6CwVF_cAFtztTRDEBK78FwuFSjeGQiwLplCq-e1Hj2pUgKkPpKFAPzAHfjIk2nlatAeAC4hZqLXZUuYSyve1zytRPpeJ70IaKSgPexHy7M-RLDI0OIDrOd8gPrUfdY8QNcnKOfU5Jj1lo">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+        <div class="relative z-10 max-w-container-max mx-auto px-margin-desktop w-full">
+            <div class="max-w-2xl text-white">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/20 border border-secondary/30 mb-6">
+                    <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]"
+                        style="font-variation-settings: 'FILL' 1;">bolt</span>
+                    <span class="font-mono-label text-secondary-fixed-dim">INNOVATION IN GAME ENGINEERING</span>
+                </div>
+                <h1 class="font-display-lg text-display-lg md:text-[56px] leading-tight mb-6">
+                    미래의 게임 산업을 이끌어갈<br>창의적 공학 인재의 산실
+                </h1>
+                <p class="font-body-lg text-body-lg text-surface-variant mb-10 opacity-90">
+                    실무 중심 교육과 최첨단 인프라로 당신의 꿈을 현실로 만듭니다. 글로벌 게임 시장의 리더로 성장할 여정을 여기서 시작하세요.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button
+                        class="bg-secondary text-white px-8 py-4 rounded-lg font-title-md hover:bg-secondary-container transition-colors flex items-center justify-center gap-2">
+                        입학 안내 <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                    <button
+                        class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-lg font-title-md hover:bg-white/20 transition-colors">
+                        홍보 영상 보기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Introduction Section -->
+    <section class="py-24 bg-surface" id="about">
+        <div class="max-w-container-max mx-auto px-margin-desktop">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="font-mono-label text-secondary tracking-widest block mb-4">DEPARTMENT OVERVIEW</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary mb-8">기술과 예술의 경계를 넘나드는<br>전문 공학 교육</h2>
+                    <div class="space-y-6 text-on-surface-variant">
+                        <p class="font-body-md text-body-md leading-relaxed">
+                            우리 게임공학과는 단순한 게임 플레이를 넘어, 게임을 구성하는 핵심 엔진 기술, 인터랙티브 시스템, 그리고 창의적인 콘텐츠 설계 능력을 배양하는 데 집중합니다.
+                        </p>
+                        <p class="font-body-md text-body-md leading-relaxed">
+                            글로벌 게임 시장의 요구에 부응하기 위해 C++, Unreal Engine, Unity와 같은 최신 기술 스택을 마스터하고, 인공지능과 가상현실 기술을 융합한 차세대
+                            게임 개발의 선구자를 육성합니다.
+                        </p>
+                    </div>
+                    <div class="mt-10 grid grid-cols-2 gap-8">
+                        <div class="border-l-4 border-secondary pl-4">
+                            <div class="text-[32px] font-bold text-primary">76.8%</div>
+                            <div class="text-label-sm text-on-surface-variant">전공 관련 취업률</div>
+                        </div>
+                        <div class="border-l-4 border-secondary pl-4">
+                            <div class="text-[32px] font-bold text-primary">50+</div>
+                            <div class="text-label-sm text-on-surface-variant">산학협력 파트너사</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="aspect-video rounded-2xl overflow-hidden shadow-2xl border border-outline-variant/30">
+                        <img class="w-full h-full object-cover"
+                            data-alt="A high-tech game development laboratory featuring a wide, clean environment with multiple dual-monitor setups showing complex game code and 3D modeling software. The room is filled with students collaborating in a professional, focused atmosphere. The lighting is bright and modern, emphasizing the academic and technical excellence of the school with a cool blue and crisp white color palette."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5zqEZfrP5-B-aOnLXDUD1wrEM80NwFrkwBPRU_moiYZSE5-JcWpLO8lt8dGF9FgKMj-3457TPBSdAM88fDoIbLyN9Rj5NkBvpg7VGfBgl8a0EzSkWMZKRXGLDLJGO6p_q2ZAtSsEMT0QZ6yQvOX3sQLHZHxMOhb7FRy8ubLT8kk_1fk4UlJHihS_UWjIvo0wKd2cJKrUB_9CoHnk7YzJ1unNxvWEZ8WnNX-b4K9pS78A0h6evg473qhTqJtcTRE7EF_1C3-uoOww">
+                    </div>
+                    <div
+                        class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg border border-outline-variant/20 hidden md:block max-w-[200px]">
+                        <p class="text-label-sm font-bold text-primary">Academic Excellence</p>
+                        <p class="text-[12px] text-on-surface-variant mt-1">2024 QS World University Rankings top-tier
+                            program.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Strengths Section -->
+    <section class="py-24 bg-white" id="strengths">
+        <div class="max-w-container-max mx-auto px-margin-desktop">
+            <div class="text-center mb-16">
+                <h2 class="font-headline-lg text-headline-lg text-primary mb-4">학과만의 차별화된 강점</h2>
+                <p class="font-body-md text-on-surface-variant max-w-2xl mx-auto">글로벌 기준에 맞춘 최고 수준의 교육 환경을 제공합니다.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-gutter">
+                <!-- Card 1 -->
+                <div class="bento-card bg-surface-container-low p-8 rounded-2xl border-t-4 border-primary">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary">terminal</span>
+                    </div>
+                    <h3 class="font-title-md text-title-md text-primary mb-4">최첨단 실습 인프라</h3>
+                    <p class="text-on-surface-variant text-body-md">RTX 4090 기반의 하이엔드 개발 스테이션과 모션 캡처 스튜디오, VR/AR 테스트 랩을
+                        상시 운영합니다.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bento-card bg-surface-container-low p-8 rounded-2xl border-t-4 border-secondary">
+                    <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-secondary">handshake</span>
+                    </div>
+                    <h3 class="font-title-md text-title-md text-primary mb-4">산업체 밀착형 산학협력</h3>
+                    <p class="text-on-surface-variant text-body-md">넥슨, 엔씨소프트 등 국내 유수의 게임사와 함께하는 캡스톤 프로젝트를 통해 실무 감각을
+                        익힙니다.</p>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="bento-card bg-surface-container-low p-8 rounded-2xl border-t-4 border-on-tertiary-container">
+                    <div class="w-12 h-12 bg-on-tertiary-container/10 rounded-lg flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-on-tertiary-container">school</span>
+                    </div>
+                    <h3 class="font-title-md text-title-md text-primary mb-4">현업 전문가 교수진</h3>
+                    <p class="text-on-surface-variant text-body-md">메이저 게임사 출신의 기술 디렉터와 엔진 아키텍트들이 직접 전공 심화 과정을 지도합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Major Tracks Section -->
+    <section class="py-24 bg-tertiary text-white" id="tracks">
+        <div class="max-w-container-max mx-auto px-margin-desktop">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="font-headline-lg text-headline-lg mb-4 text-glow">미래를 결정하는 3가지 전공 트랙</h2>
+                    <p class="text-on-tertiary/70 font-body-md max-w-xl">적성과 비전에 따라 세분화된 전문 커리큘럼을 선택할 수 있습니다.</p>
+                </div>
+                <button
+                    class="border border-on-tertiary/30 px-6 py-2 rounded-lg hover:bg-white/10 transition-colors font-label-sm">커리큘럼
+                    전체보기</button>
+            </div>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Track 1 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-surface-container-highest/10 p-1">
+                    <div class="bg-tertiary p-8 rounded-xl h-full transition-all group-hover:bg-tertiary-container">
+                        <div class="flex justify-between items-start mb-8">
+                            <span class="text-[48px] font-bold text-secondary/30">01</span>
+                            <span class="material-symbols-outlined text-secondary text-[40px]"
+                                style="font-variation-settings: 'FILL' 1;">code</span>
+                        </div>
+                        <h3 class="font-title-md text-[24px] mb-4">게임 프로그래밍</h3>
+                        <ul class="space-y-3 text-on-tertiary/80 text-label-sm mb-8">
+                            <li class="flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-[16px] text-secondary">check</span> 엔진 최적화
+                                &amp; 아키텍처</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-[16px] text-secondary">check</span> 멀티플레이어 서버
+                                프로그래밍</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-[16px] text-secondary">check</span> AI &amp;
+                                물리 시뮬레이션</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Track 2 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-surface-container-highest/10 p-1">
+                    <div class="bg-tertiary p-8 rounded-xl h-full transition-all group-hover:bg-tertiary-container">
+                        <div class="flex justify-between items-start mb-8">
+                            <span class="text-[48px] font-bold text-tertiary-fixed-dim/30">02</span>
+                            <span class="material-symbols-outlined text-tertiary-fixed-dim text-[40px]"
+                                style="font-variation-settings: 'FILL' 1;">brush</span>
+                        </div>
+                        <h3 class="font-title-md text-[24px] mb-4">테크니컬 아트 &amp; 그래픽스</h3>
+                        <ul class="space-y-3 text-on-tertiary/80 text-label-sm mb-8">
+                            <li class="flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim">check</span>
+                                셰이더 &amp; VFX 개발</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim">check</span>
+                                절차적 에셋 생성</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim">check</span>
+                                리얼타임 렌더링 파이프라인</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Track 3 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-surface-container-highest/10 p-1">
+                    <div class="bg-tertiary p-8 rounded-xl h-full transition-all group-hover:bg-tertiary-container">
+                        <div class="flex justify-between items-start mb-8">
+                            <span class="text-[48px] font-bold text-on-tertiary-container/30">03</span>
+                            <span class="material-symbols-outlined text-on-tertiary-container text-[40px]"
+                                style="font-variation-settings: 'FILL' 1;">architecture</span>
+                        </div>
+                        <h3 class="font-title-md text-[24px] mb-4">게임 기획 &amp; 디자인</h3>
+                        <ul class="space-y-3 text-on-tertiary/80 text-label-sm mb-8">
+                            <li class="flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-[16px] text-on-tertiary-container">check</span>
+                                레벨 디자인 &amp; 밸런싱</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-[16px] text-on-tertiary-container">check</span>
+                                게임 경제 시스템 설계</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-[16px] text-on-tertiary-container">check</span>
+                                UI/UX 인터랙션 디자인</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Student Projects Section -->
+    <section class="relative py-24 overflow-hidden" id="projects">
+        <div class="absolute inset-0 z-0">
+            <img alt="프로젝트 배경" class="w-full h-full object-cover opacity-10"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCENF9wqwOOMMCr9MopIrH_6NU0Nw72q1_1UV5iLCZMh8by9qGm1H3OpuHnVEsA6eTlGtFOAT2ByBZcIvJUdVIfur482LHHz_H0704LPsCqCeUR7q4qq5gnV0sbZotvakpsnNzjjc9TjersJM1p4_72IRxp9RoJdIxF9dMIH0jti_bf4zT-tHcqzuoAujLhXvT7re5xaJfGA8JyCy5JlKUx3640ohJytgB2Oi2QcXG__YTdsWBxtHyIC267AcFxKstGZcyYjnBTTyQ">
+            <div class="absolute inset-0 bg-gradient-to-b from-surface via-surface/80 to-surface"></div>
+        </div>
+        <div class="relative z-10 max-w-container-max mx-auto px-margin-desktop">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-16">
+                <h2 class="font-headline-lg text-headline-lg text-primary">학생 우수 프로젝트</h2>
+                <div class="flex gap-2 mt-4 md:mt-0">
+                    <button class="p-2 border border-outline-variant rounded-full hover:bg-white transition-colors">
+                        <span class="material-symbols-outlined">chevron_left</span>
+                    </button>
+                    <button class="p-2 border border-outline-variant rounded-full hover:bg-white transition-colors">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-gutter">
+                <!-- Project 1 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20">
+                    <div class="aspect-video relative overflow-hidden">
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            data-alt="A cinematic screenshot of a high-fidelity first-person shooter game set in a futuristic cyberpunk city. Neon lights reflect off wet surfaces, and the environment shows intricate detail in textures and lighting. The visual style is intensely technical, showcasing advanced shader work and real-time ray tracing capabilities. The overall mood is immersive and high-energy."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmXStaVmUrDkxo2T2v8gv_QYFhnk-7ePLIouKJc4JGGiHvoNherV3tQnnKsKq1WZ6jNQGlIbmT9uKCyuw1zFUAXAPUkv0yGtW1Kunz0A8EvM6Lv6vxww_z8S-ppnX96u91a3BYXK2LCli63pjf12X1n0CgWO8ZGsaahaRCjbE9Ys08rZbdF5tnPiv2fCtT7ucbizB6SfT-VhWQQ5mnAAPoHToI1gTcy04lWPZKHCSfxvUJkQx3Tk5Vp0VB4U190AnrKGG9tOdWsVI">
+                        <div
+                            class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-[48px]">play_circle</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-3">
+                            <span
+                                class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded uppercase">Unreal
+                                5</span>
+                            <span
+                                class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase">2023
+                                Capstone</span>
+                        </div>
+                        <h4 class="font-title-md text-primary mb-2">Project: NEON DRIFT</h4>
+                        <p class="text-label-sm text-on-surface-variant line-clamp-2">레이트레이싱 기술을 활용한 하이엔드 레이싱 액션 게임.</p>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20">
+                    <div class="aspect-video relative overflow-hidden">
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            data-alt="A vibrant, stylized 3D platformer game scene with a whimsical character in a lush, green forest environment. The art style is crisp and professional, reminiscent of high-end indie games. The lighting is soft and warm, highlighting the smooth animations and artistic composition. It conveys a sense of creative freedom and high-quality game design education."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXy7EEbzunG0e-MkTnt6nfFxecVX_I_WSW3MEsZqavDlHNXVVUmEYiKmFhrX18tWvqrJ-H3HnMRxkwvH0EUBFUsBJR4DtgQT_VfIuvGj1lJN1Fxra2Y3ooRs2bval-QL1AcfVIbRiw992J1OLlLKhCZS2JJY2A5r87_v-LGBGaE-K8eHMjoCGrcMPvA-eDOQIGBzGUh4df1uexpiCW8jzI1bhcnnO3xfcTiQsWjfiKuj1K8KEF-devr2dhwgLbhaSxj_-clfd6yNY">
+                        <div
+                            class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-[48px]">play_circle</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-3">
+                            <span
+                                class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded uppercase">Unity</span>
+                            <span
+                                class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase">Global
+                                Game Jam</span>
+                        </div>
+                        <h4 class="font-title-md text-primary mb-2">Project: FOREST GUARDIAN</h4>
+                        <p class="text-label-sm text-on-surface-variant line-clamp-2">감각적인 아트 스타일의 퍼즐 플랫폼 어드벤처.</p>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20">
+                    <div class="aspect-video relative overflow-hidden">
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            data-alt="A screenshot of a complex real-time strategy game dashboard, showcasing advanced UI/UX design with data-heavy elements like maps, resource meters, and unit statistics. The interface is clean, professional, and mathematically structured, using a deep navy and electric blue palette. It highlights the technical engineering aspect of game development education."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3xE7K4cxnbHBs3T-G8JZ86V43bSiJB_fwJpbx7lPStRmFoQdoF-zulPEN6o7ZbzdZ9pbls-C5o1jMnevmYggutMzHvqs87mpMYSEJ1YKranKpySMCAnLbHtcjwU3y293b3plxYJ0yEY1uGUzQSzbxTGsZundW1h2C-iWzvLkB3xyU7V0iCoDDhK9O3upJpRTbL25BATk-DnDQHkVeXw4kvXSgrL9qLsM1U9ZcK3XQKyxCeZHKRTW9JSl8U1VE8Qg7QCcc-VlFrFs">
+                        <div
+                            class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-[48px]">play_circle</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-3">
+                            <span
+                                class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded uppercase">Custom
+                                Engine</span>
+                            <span
+                                class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase">Thesis
+                                Work</span>
+                        </div>
+                        <h4 class="font-title-md text-primary mb-2">Project: STRATOS CORE</h4>
+                        <p class="text-label-sm text-on-surface-variant line-clamp-2">자체 개발 엔진을 활용한 실시간 대규모 시뮬레이션 전략 게임.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Career Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-container-max mx-auto px-margin-desktop">
+            <div class="text-center mb-16">
+                <h2 class="font-headline-lg text-headline-lg text-primary mb-4">졸업 후 진로 및 취업 현황</h2>
+                <p class="font-body-md text-on-surface-variant">당신의 커리어는 국내외 최고의 게임 스튜디오에서 시작됩니다.</p>
+            </div>
+            <div
+                class="grid grid-cols-2 md:grid-cols-4 gap-gutter mb-16 grayscale opacity-60 hover:opacity-100 transition-opacity">
+                <div
+                    class="h-20 bg-surface flex items-center justify-center rounded-lg font-bold text-primary border border-outline-variant/30">
+                    NEXON</div>
+                <div
+                    class="h-20 bg-surface flex items-center justify-center rounded-lg font-bold text-primary border border-outline-variant/30">
+                    NCSOFT</div>
+                <div
+                    class="h-20 bg-surface flex items-center justify-center rounded-lg font-bold text-primary border border-outline-variant/30">
+                    NETMARBLE</div>
+                <div
+                    class="h-20 bg-surface flex items-center justify-center rounded-lg font-bold text-primary border border-outline-variant/30">
+                    KRAFTON</div>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-6 bg-surface-container-low rounded-xl">
+                    <h5 class="font-title-md text-secondary mb-2">Engine Developer</h5>
+                    <p class="text-label-sm text-on-surface-variant">게임 코어 엔진 및 그래픽 라이브러리 개발</p>
+                </div>
+                <div class="p-6 bg-surface-container-low rounded-xl">
+                    <h5 class="font-title-md text-secondary mb-2">Technical Artist</h5>
+                    <p class="text-label-sm text-on-surface-variant">아트와 프로그래밍의 가교 역할 및 최적화</p>
+                </div>
+                <div class="p-6 bg-surface-container-low rounded-xl">
+                    <h5 class="font-title-md text-secondary mb-2">System Designer</h5>
+                    <p class="text-label-sm text-on-surface-variant">게임 로직 및 경제 시스템 설계 전문가</p>
+                </div>
+                <div class="p-6 bg-surface-container-low rounded-xl">
+                    <h5 class="font-title-md text-secondary mb-2">UX Engineer</h5>
+                    <p class="text-label-sm text-on-surface-variant">사용자 중심 인터페이스 및 경험 설계</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ Section -->
+    <section class="py-24 bg-surface" id="faq">
+        <div class="max-w-3xl mx-auto px-margin-desktop">
+            <h2 class="font-headline-lg text-headline-lg text-primary mb-12 text-center">자주 묻는 질문</h2>
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="bg-white rounded-xl border border-outline-variant/30 overflow-hidden">
+                    <button
+                        class="w-full flex justify-between items-center p-6 text-left hover:bg-surface-container-low transition-colors"
+                        onclick="toggleFaq(this)">
+                        <span class="font-title-md text-primary">비전공자도 지원 가능한가요?</span>
+                        <span class="material-symbols-outlined transition-transform duration-300"
+                            style="transform: rotate(0deg);">expand_more</span>
+                    </button>
+                    <div
+                        class="px-6 pb-6 text-on-surface-variant text-body-md border-t border-outline-variant/10 mt-4 pt-4 hidden">
+                        네, 가능합니다. 입학 후 1학년 과정에서 프로그래밍의 기초부터 체계적으로 교육하므로 열정만 있다면 누구나 도전할 수 있습니다.
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="bg-white rounded-xl border border-outline-variant/30 overflow-hidden">
+                    <button
+                        class="w-full flex justify-between items-center p-6 text-left hover:bg-surface-container-low transition-colors"
+                        onclick="toggleFaq(this)">
+                        <span class="font-title-md text-primary">실습실은 언제든지 이용 가능한가요?</span>
+                        <span class="material-symbols-outlined transition-transform duration-300"
+                            style="transform: rotate(0deg);">expand_more</span>
+                    </button>
+                    <div
+                        class="px-6 pb-6 text-on-surface-variant text-body-md border-t border-outline-variant/10 mt-4 pt-4 hidden">
+                        모든 학과 전공 실습실은 학생증 태그를 통해 24시간 연중무휴로 개방되어 있어 프로젝트 수행에 전념할 수 있습니다.
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="bg-white rounded-xl border border-outline-variant/30 overflow-hidden">
+                    <button
+                        class="w-full flex justify-between items-center p-6 text-left hover:bg-surface-container-low transition-colors"
+                        onclick="toggleFaq(this)">
+                        <span class="font-title-md text-primary">장학금 혜택은 어떤 것들이 있나요?</span>
+                        <span class="material-symbols-outlined transition-transform duration-300"
+                            style="transform: rotate(0deg);">expand_more</span>
+                    </button>
+                    <div
+                        class="px-6 pb-6 text-on-surface-variant text-body-md border-t border-outline-variant/10 mt-4 pt-4 hidden">
+                        성적 장학금 외에도 산학협력 프로젝트 참여 장학금, 공모전 입상 장학금 등 다양한 교내외 장학 혜택을 지원하고 있습니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="py-24 bg-white" id="contact">
+        <div class="max-w-container-max mx-auto px-margin-desktop">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="font-headline-lg text-headline-lg text-primary mb-8">궁금한 점이 있으신가요?</h2>
+                    <p class="text-on-surface-variant mb-10">입학 상담, 캠퍼스 투어, 산학협력 문의 등 무엇이든 물어보세요. 학과 사무실에서 친절히 답변해 드립니다.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-secondary">location_on</span>
+                            <div>
+                                <p class="font-bold text-primary">위치</p>
+                                <p class="text-label-sm text-on-surface-variant"><span
+                                        style="color: rgb(102, 102, 102); font-family: &quot;Nanum Gothic&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: -0.6px;">&nbsp;대전광역시
+                                        서구 배재로 155-40 배재대학교 국제교류관 126호 입학처</span></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-secondary">mail</span>
+                            <div>
+                                <p class="font-bold text-primary">이메일</p>
+                                <p class="text-label-sm text-on-surface-variant">paichai@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-secondary">call</span>
+                            <div>
+                                <p class="font-bold text-primary">전화</p>
+                                <p class="text-label-sm text-on-surface-variant">02-123-4567</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-12 h-64 w-full bg-surface-container rounded-2xl overflow-hidden relative border border-outline-variant/30">
+                        <div class="absolute inset-0 bg-slate-200">
+                            <!-- Simple Map Placeholder Representation -->
+                            <div class="w-full h-full flex items-center justify-center text-on-surface-variant/30">
+                                <span class="material-symbols-outlined text-[64px]">map</span>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-white p-2 rounded shadow text-[12px] font-bold">배재 게임
+                            공학과 정보 과학관</div>
+                    </div>
+                </div>
+                <div class="bg-surface p-8 md:p-12 rounded-3xl border border-outline-variant/20 shadow-sm">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-label-sm font-bold text-primary mb-2">성함</label>
+                                <input
+                                    class="w-full bg-white border border-outline-variant rounded-lg p-3 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+                                    placeholder="홍길동" type="text">
+                            </div>
+                            <div>
+                                <label class="block text-label-sm font-bold text-primary mb-2">연락처</label>
+                                <input
+                                    class="w-full bg-white border border-outline-variant rounded-lg p-3 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+                                    placeholder="010-0000-0000" type="tel">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-label-sm font-bold text-primary mb-2">이메일</label>
+                            <input
+                                class="w-full bg-white border border-outline-variant rounded-lg p-3 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+                                placeholder="example@email.com" type="email">
+                        </div>
+                        <div>
+                            <label class="block text-label-sm font-bold text-primary mb-2">문의 내용</label>
+                            <textarea
+                                class="w-full bg-white border border-outline-variant rounded-lg p-3 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+                                placeholder="궁금하신 내용을 입력해주세요." rows="4"></textarea>
+                        </div>
+                        <button
+                            class="w-full bg-primary text-white font-bold py-4 rounded-lg hover:bg-primary-container transition-colors shadow-lg"
+                            type="submit">문의하기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-tertiary text-on-tertiary py-12 border-t border-outline-variant/20">
+        <div class="max-w-container-max mx-auto px-margin-desktop">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-start mb-12">
+                <div>
+                    <h2 class="font-title-md text-title-md text-on-tertiary mb-6">게임공학과</h2>
+                    <p class="font-label-sm text-on-tertiary/70 max-w-sm mb-6">Professionalism in Game Engineering. We
+                        build the future of interactive entertainment.</p>
+                    <div class="flex gap-4">
+                        <a class="text-on-tertiary/70 hover:text-secondary-fixed-dim transition-colors" href="#"><span
+                                class="material-symbols-outlined">language</span></a>
+                        <a class="text-on-tertiary/70 hover:text-secondary-fixed-dim transition-colors" href="#"><span
+                                class="material-symbols-outlined">public</span></a>
+                        <a class="text-on-tertiary/70 hover:text-secondary-fixed-dim transition-colors" href="#"><span
+                                class="material-symbols-outlined">smart_display</span></a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-on-tertiary">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li class=""><a
+                                    class="text-on-tertiary/70 hover:text-secondary-fixed-dim text-label-sm transition-colors"
+                                    href="#">학과사무실</a></li>
+                            <li class=""><a
+                                    class="text-on-tertiary/70 hover:text-secondary-fixed-dim text-label-sm transition-colors"
+                                    href="#">오시는 길</a></li>
+                            <li class=""><a
+                                    class="text-on-tertiary/70 hover:text-secondary-fixed-dim text-label-sm transition-colors"
+                                    href="#">학사일정</a></li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-on-tertiary">Policy</h4>
+                        <ul class="space-y-2">
+                            <li class=""><a
+                                    class="text-on-tertiary/70 hover:text-secondary-fixed-dim text-label-sm transition-colors"
+                                    href="#">개인정보처리방침</a></li>
+                            <li class=""><a
+                                    class="text-on-tertiary/70 hover:text-secondary-fixed-dim text-label-sm transition-colors"
+                                    href="#">이용약관</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-on-tertiary/10 text-center text-label-sm text-on-tertiary/50">
+                © 2026 게임공학과. All rights reserved. Professionalism in Game Engineering.
+            </div>
+        </div>
+    </footer>
+    <script>
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.material-symbols-outlined');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Simple scroll reveal effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2');
+                nav.classList.remove('h-20');
+                nav.classList.add('h-16');
+            } else {
+                nav.classList.remove('py-2');
+                nav.classList.add('h-20');
+                nav.classList.remove('h-16');
+            }
+        });
+    </script>
+
+
 </body>
+
 </html>
