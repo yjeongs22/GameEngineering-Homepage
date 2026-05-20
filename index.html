@@ -110,6 +110,10 @@
 
 <body
     class="bg-background text-on-background font-body-md selection:bg-secondary-fixed-dim selection:text-on-secondary-fixed">
+    <!-- Custom Gaming Cursor Elements -->
+    <div class="custom-cursor-dot hidden md:block"></div>
+    <div class="custom-cursor-circle hidden md:block"></div>
+
     <!-- Top Navigation Bar -->
     <nav
         class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-300">
@@ -119,9 +123,11 @@
                 <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors"
                     href="#about">학과소개</a>
                 <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors"
-                    href="#strengths">교육과정</a>
+                    href="#strengths">학과강점</a>
                 <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors"
-                    href="#tracks">연구분야</a>
+                    href="#tracks">교육과정</a>
+                <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors"
+                    href="#faculty">교수소개</a>
                 <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors"
                     href="#projects">프로젝트</a>
                 <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#faq">FAQ</a>
@@ -141,6 +147,7 @@
             <img alt="학과 전경" class="w-full h-full object-cover"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwcFNxvFl9yxABEWYEkJ0dPbRwoWS8JdQCVv5qLw4jo-xStknYvaV0yyxeYobcuTUeBMfD5JPaHp-p4gXLtkpHvFR7QWZvpiMmfy3YylAo1XHClKN3fmSIEf6kTM0ISZ6CwVF_cAFtztTRDEBK78FwuFSjeGQiwLplCq-e1Hj2pUgKkPpKFAPzAHfjIk2nlatAeAC4hZqLXZUuYSyve1zytRPpeJ70IaKSgPexHy7M-RLDI0OIDrOd8gPrUfdY8QNcnKOfU5Jj1lo">
             <div class="absolute inset-0 hero-gradient"></div>
+            <canvas id="hero-canvas" class="absolute inset-0 z-10 pointer-events-none opacity-60"></canvas>
         </div>
         <div class="relative z-10 max-w-container-max mx-auto px-margin-desktop w-full">
             <div class="max-w-2xl text-white">
@@ -221,32 +228,37 @@
             </div>
             <div class="grid md:grid-cols-3 gap-gutter">
                 <!-- Card 1 -->
-                <div class="bento-card bg-surface-container-low p-8 rounded-2xl border-t-4 border-primary">
-                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-primary">terminal</span>
+                <div class="tilt-card bg-surface-container-low p-8 rounded-2xl border-t-4 border-primary relative overflow-hidden">
+                    <div class="sheen-overlay"></div>
+                    <div class="tilt-inner">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-primary">terminal</span>
+                        </div>
+                        <h3 class="font-title-md text-title-md text-primary mb-4">실무 중심 혁신 교육</h3>
+                        <p class="text-on-surface-variant text-body-md">C/C++, Java, C#, Unity, Unreal Engine뿐만 아니라 컴퓨터 그래픽스(DirectX/OpenGL), VR/AR 및 인공지능(AI) 게임 에이전트를 아우르는 최신 실무 핵심 교육을 제공합니다.</p>
                     </div>
-                    <h3 class="font-title-md text-title-md text-primary mb-4">최첨단 실습 인프라</h3>
-                    <p class="text-on-surface-variant text-body-md">RTX 4090 기반의 하이엔드 개발 스테이션과 모션 캡처 스튜디오, VR/AR 테스트 랩을
-                        상시 운영합니다.</p>
                 </div>
                 <!-- Card 2 -->
-                <div class="bento-card bg-surface-container-low p-8 rounded-2xl border-t-4 border-secondary">
-                    <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-secondary">handshake</span>
+                <div class="tilt-card bg-surface-container-low p-8 rounded-2xl border-t-4 border-secondary relative overflow-hidden">
+                    <div class="sheen-overlay"></div>
+                    <div class="tilt-inner">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-secondary">groups</span>
+                        </div>
+                        <h3 class="font-title-md text-title-md text-primary mb-4">3대 학술 소모임 활성화</h3>
+                        <p class="text-on-surface-variant text-body-md">지능형 게임을 연구하는 <strong>NLIP</strong>, 3D 그래픽스를 공부하는 <strong>게임 그래픽스 연구실</strong>, 차세대 엔진을 설계하는 <strong>NetMedia</strong> 소모임을 통해 심화 전공 탐구를 지원합니다.</p>
                     </div>
-                    <h3 class="font-title-md text-title-md text-primary mb-4">산업체 밀착형 산학협력</h3>
-                    <p class="text-on-surface-variant text-body-md">넥슨, 엔씨소프트 등 국내 유수의 게임사와 함께하는 캡스톤 프로젝트를 통해 실무 감각을
-                        익힙니다.</p>
                 </div>
                 <!-- Card 3 -->
-                <div
-                    class="bento-card bg-surface-container-low p-8 rounded-2xl border-t-4 border-on-tertiary-container">
-                    <div class="w-12 h-12 bg-on-tertiary-container/10 rounded-lg flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-on-tertiary-container">school</span>
+                <div class="tilt-card bg-surface-container-low p-8 rounded-2xl border-t-4 border-on-tertiary-container relative overflow-hidden">
+                    <div class="sheen-overlay"></div>
+                    <div class="tilt-inner">
+                        <div class="w-12 h-12 bg-on-tertiary-container/10 rounded-lg flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-on-tertiary-container">workspace_premium</span>
+                        </div>
+                        <h3 class="font-title-md text-title-md text-primary mb-4">확실한 포트폴리오 &amp; 장학</h3>
+                        <p class="text-on-surface-variant text-body-md">IT 융합 인재 장학 혜택을 전폭 지원하며, 3학년 캡스톤디자인부터 4학년 산학캡스톤디자인으로 이어지는 실무 밀착형 연계를 통해 독보적인 취업 포트폴리오 구축을 보장합니다.</p>
                     </div>
-                    <h3 class="font-title-md text-title-md text-primary mb-4">현업 전문가 교수진</h3>
-                    <p class="text-on-surface-variant text-body-md">메이저 게임사 출신의 기술 디렉터와 엔진 아키텍트들이 직접 전공 심화 과정을 지도합니다.
-                    </p>
                 </div>
             </div>
         </div>
@@ -275,14 +287,13 @@
                         <h3 class="font-title-md text-[24px] mb-4">게임 프로그래밍</h3>
                         <ul class="space-y-3 text-on-tertiary/80 text-label-sm mb-8">
                             <li class="flex items-center gap-2"><span
-                                    class="material-symbols-outlined text-[16px] text-secondary">check</span> 엔진 최적화
-                                &amp; 아키텍처</li>
+                                    class="material-symbols-outlined text-[16px] text-secondary">check</span> 기초 &amp; 고급 C / C++ 프로그래밍</li>
                             <li class="flex items-center gap-2"><span
-                                    class="material-symbols-outlined text-[16px] text-secondary">check</span> 멀티플레이어 서버
-                                프로그래밍</li>
+                                    class="material-symbols-outlined text-[16px] text-secondary">check</span> 자료구조 &amp; 알고리즘 분석</li>
                             <li class="flex items-center gap-2"><span
-                                    class="material-symbols-outlined text-[16px] text-secondary">check</span> AI &amp;
-                                물리 시뮬레이션</li>
+                                    class="material-symbols-outlined text-[16px] text-secondary">check</span> 자바 &amp; C# 프로그래밍 기초/심화</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-[16px] text-secondary">check</span> 게임 서버 프로그래밍 &amp; AI 에이전트</li>
                         </ul>
                     </div>
                 </div>
@@ -298,13 +309,16 @@
                         <ul class="space-y-3 text-on-tertiary/80 text-label-sm mb-8">
                             <li class="flex items-center gap-2"><span
                                     class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim">check</span>
-                                셰이더 &amp; VFX 개발</li>
+                                게임 제작 플랫폼 &amp; 게임 엔진</li>
                             <li class="flex items-center gap-2"><span
                                     class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim">check</span>
-                                절차적 에셋 생성</li>
+                                컴퓨터 그래픽스 (DirectX / OpenGL)</li>
                             <li class="flex items-center gap-2"><span
                                     class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim">check</span>
-                                리얼타임 렌더링 파이프라인</li>
+                                VR / AR 실감형 프로그래밍</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim">check</span>
+                                실감형 &amp; 지능형 게임 프로젝트</li>
                         </ul>
                     </div>
                 </div>
@@ -316,23 +330,108 @@
                             <span class="material-symbols-outlined text-on-tertiary-container text-[40px]"
                                 style="font-variation-settings: 'FILL' 1;">architecture</span>
                         </div>
-                        <h3 class="font-title-md text-[24px] mb-4">게임 기획 &amp; 디자인</h3>
+                        <h3 class="font-title-md text-[24px] mb-4">게임 기획 &amp; 캡스톤 디자인</h3>
                         <ul class="space-y-3 text-on-tertiary/80 text-label-sm mb-8">
                             <li class="flex items-center gap-2"><span
                                     class="material-symbols-outlined text-[16px] text-on-tertiary-container">check</span>
-                                레벨 디자인 &amp; 밸런싱</li>
+                                전공의 이해 &amp; 전공과 진로 설계</li>
                             <li class="flex items-center gap-2"><span
                                     class="material-symbols-outlined text-[16px] text-on-tertiary-container">check</span>
-                                게임 경제 시스템 설계</li>
+                                창의공학설계 &amp; 게임 디자인</li>
                             <li class="flex items-center gap-2"><span
                                     class="material-symbols-outlined text-[16px] text-on-tertiary-container">check</span>
-                                UI/UX 인터랙션 디자인</li>
+                                캡스톤 디자인 1 &amp; 2 (졸업작품 제작)</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-[16px] text-on-tertiary-container">check</span>
+                                산학 캡스톤 디자인 1 &amp; 2 연계</li>
                         </ul>
+            </div>
+
+            <!-- Certifications Sub-section -->
+            <div class="mt-20 pt-16 border-t border-on-tertiary/10 text-center">
+                <h4 class="font-title-sm text-on-tertiary/60 uppercase tracking-wider mb-8 text-[14px]">취득 가능 전문 자격증</h4>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="bg-white/5 border border-white/10 px-6 py-2.5 rounded-full text-label-sm hover:bg-white/15 hover:border-secondary transition-all cursor-default">정보처리기사</span>
+                    <span class="bg-white/5 border border-white/10 px-6 py-2.5 rounded-full text-label-sm hover:bg-white/15 hover:border-secondary transition-all cursor-default">게임프로그래밍전문가</span>
+                    <span class="bg-white/5 border border-white/10 px-6 py-2.5 rounded-full text-label-sm hover:bg-white/15 hover:border-secondary transition-all cursor-default">멀티미디어콘텐츠제작전문가</span>
+                    <span class="bg-white/5 border border-white/10 px-6 py-2.5 rounded-full text-label-sm hover:bg-white/15 hover:border-secondary transition-all cursor-default">네트워크관리사</span>
+                    <span class="bg-white/5 border border-white/10 px-6 py-2.5 rounded-full text-label-sm hover:bg-white/15 hover:border-secondary transition-all cursor-default">SCJP / SCJD (Java 국제 공인)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Section -->
+    <section class="py-24 bg-surface-container-low" id="faculty">
+        <div class="max-w-container-max mx-auto px-margin-desktop">
+            <div class="text-center mb-16">
+                <h2 class="font-headline-lg text-headline-lg text-primary mb-4">우수한 교수진</h2>
+                <p class="font-body-md text-on-surface-variant">학문적 깊이와 실무 역량을 겸비한 게임공학 전공 교수진이 여러분의 성장을 이끕니다.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-gutter">
+                <!-- Faculty Card 1 -->
+                <div class="tilt-card bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20 p-8 flex flex-col items-center text-center hover:shadow-md transition-all relative">
+                    <div class="sheen-overlay"></div>
+                    <div class="tilt-inner w-full flex flex-col items-center">
+                        <div class="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-primary text-[48px]">person</span>
+                        </div>
+                        <span class="bg-primary/10 text-primary text-[11px] font-bold px-3 py-1 rounded-full mb-3">학과장 / 교수</span>
+                        <h3 class="font-title-md text-[20px] text-primary mb-1">심윤식 교수</h3>
+                        <p class="text-[13px] text-on-surface-variant/70 mb-4">연구실: 정보과학관 C동 406호</p>
+                        <div class="w-full border-t border-outline-variant/10 pt-4 mb-4 text-left">
+                            <p class="text-[12px] font-bold text-primary mb-1.5 flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">school</span> 담당 과목</p>
+                            <p class="text-[13px] text-on-surface-variant leading-relaxed">컴퓨터그래픽스, 기초C프로그래밍, 실감형/지능형 게임 프로젝트</p>
+                        </div>
+                        <a href="mailto:ysshim@pcu.ac.kr" class="text-label-sm text-secondary hover:underline flex items-center gap-1 mt-auto">
+                            <span class="material-symbols-outlined text-[16px]">mail</span> ysshim@pcu.ac.kr
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Faculty Card 2 -->
+                <div class="tilt-card bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20 p-8 flex flex-col items-center text-center hover:shadow-md transition-all relative">
+                    <div class="sheen-overlay"></div>
+                    <div class="tilt-inner w-full flex flex-col items-center">
+                        <div class="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-primary text-[48px]">person</span>
+                        </div>
+                        <span class="bg-secondary/10 text-secondary text-[11px] font-bold px-3 py-1 rounded-full mb-3">전임 교수</span>
+                        <h3 class="font-title-md text-[20px] text-primary mb-1">이영호 교수</h3>
+                        <p class="text-[13px] text-on-surface-variant/70 mb-4">연구실: 정보과학관 C동 407호</p>
+                        <div class="w-full border-t border-outline-variant/10 pt-4 mb-4 text-left">
+                            <p class="text-[12px] font-bold text-primary mb-1.5 flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">school</span> 담당 과목</p>
+                            <p class="text-[13px] text-on-surface-variant leading-relaxed">인공지능, AI게임에이전트, 실감형게임프로젝트, C#프로그래밍</p>
+                        </div>
+                        <a href="mailto:brain@pcu.ac.kr" class="text-label-sm text-secondary hover:underline flex items-center gap-1 mt-auto">
+                            <span class="material-symbols-outlined text-[16px]">mail</span> brain@pcu.ac.kr
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Faculty Card 3 -->
+                <div class="tilt-card bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20 p-8 flex flex-col items-center text-center hover:shadow-md transition-all relative">
+                    <div class="sheen-overlay"></div>
+                    <div class="tilt-inner w-full flex flex-col items-center">
+                        <div class="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-primary text-[48px]">person</span>
+                        </div>
+                        <span class="bg-secondary/10 text-secondary text-[11px] font-bold px-3 py-1 rounded-full mb-3">전임 교수</span>
+                        <h3 class="font-title-md text-[20px] text-primary mb-1">김태환 교수</h3>
+                        <p class="text-[13px] text-on-surface-variant/70 mb-4">연구실: 정보과학관 C동 506호</p>
+                        <div class="w-full border-t border-outline-variant/10 pt-4 mb-4 text-left">
+                            <p class="text-[12px] font-bold text-primary mb-1.5 flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">school</span> 담당 과목</p>
+                            <p class="text-[13px] text-on-surface-variant leading-relaxed">컴퓨터네트워크, 서버아키텍처, 데이터베이스, 자바프로그래밍</p>
+                        </div>
+                        <a href="mailto:crybb94@pcu.ac.kr" class="text-label-sm text-secondary hover:underline flex items-center gap-1 mt-auto">
+                            <span class="material-symbols-outlined text-[16px]">mail</span> crybb94@pcu.ac.kr
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Student Projects Section -->
     <section class="relative py-24 overflow-hidden" id="projects">
         <div class="absolute inset-0 z-0">
@@ -358,81 +457,90 @@
             </div>
             <div class="grid md:grid-cols-3 gap-gutter">
                 <!-- Project 1 -->
-                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20">
-                    <a href="https://github.com/sungwidard7/Project_MeatPath" target="_blank" rel="noopener noreferrer" class="block aspect-video relative overflow-hidden">
-                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            data-alt="고기를 산책시키는 독특한 콘셉트의 Unity 기반 3D 게임 고기산책로 포스터"
-                            src="고기산책로.png">
-                        <div
-                            class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="material-symbols-outlined text-white text-[48px]">play_circle</span>
+                <div class="tilt-card group bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20 relative">
+                    <div class="sheen-overlay"></div>
+                    <div class="tilt-inner w-full h-full">
+                        <a href="https://github.com/sungwidard7/Project_MeatPath" target="_blank" rel="noopener noreferrer" class="block aspect-video relative overflow-hidden">
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                data-alt="고기를 산책시키는 독특한 콘셉트의 Unity 기반 3D 게임 고기산책로 포스터"
+                                src="고기산책로.png">
+                            <div
+                                class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white text-[48px]">play_circle</span>
+                            </div>
+                        </a>
+                        <div class="p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span
+                                    class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded uppercase">Unity</span>
+                                <span
+                                    class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase">2025 졸업작품</span>
+                            </div>
+                            <h4 class="font-title-md text-primary mb-2">
+                                <a href="https://github.com/sungwidard7/Project_MeatPath" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                                    Project: 고기산책로
+                                </a>
+                            </h4>
+                            <p class="text-label-sm text-on-surface-variant line-clamp-2">"고기 먹고 싶은 날, 고기산책로로 가자!" 고기를 산책시키는 독특한 콘셉트의 3D 게임.</p>
                         </div>
-                    </a>
-                    <div class="p-6">
-                        <div class="flex gap-2 mb-3">
-                            <span
-                                class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded uppercase">Unity</span>
-                            <span
-                                class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase">2025 졸업작품</span>
-                        </div>
-                        <h4 class="font-title-md text-primary mb-2">
-                            <a href="https://github.com/sungwidard7/Project_MeatPath" target="_blank" rel="noopener noreferrer" class="hover:underline">
-                                Project: 고기산책로
-                            </a>
-                        </h4>
-                        <p class="text-label-sm text-on-surface-variant line-clamp-2">"고기 먹고 싶은 날, 고기산책로로 가자!" 고기를 산책시키는 독특한 콘셉트의 3D 게임.</p>
                     </div>
                 </div>
                 <!-- Project 2 -->
-                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20">
-                    <a href="https://pcugame.github.io/exhibitions/5" target="_blank" rel="noopener noreferrer" class="block aspect-video relative overflow-hidden">
-                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            data-alt="심해를 탐험하는 3D 액션 어드벤처 게임 Diver 포스터"
-                            src="diver.png">
-                        <div
-                            class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="material-symbols-outlined text-white text-[48px]">play_circle</span>
+                <div class="tilt-card group bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20 relative">
+                    <div class="sheen-overlay"></div>
+                    <div class="tilt-inner w-full h-full">
+                        <a href="https://pcugame.github.io/exhibitions/5" target="_blank" rel="noopener noreferrer" class="block aspect-video relative overflow-hidden">
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                data-alt="심해를 탐험하는 3D 액션 어드벤처 게임 Diver 포스터"
+                                src="diver.png">
+                            <div
+                                class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white text-[48px]">play_circle</span>
+                            </div>
+                        </a>
+                        <div class="p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span
+                                    class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded uppercase">Unity</span>
+                                <span
+                                    class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase">2024 졸업작품</span>
+                            </div>
+                            <h4 class="font-title-md text-primary mb-2">
+                                <a href="https://pcugame.github.io/exhibitions/5" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                                    Project: Diver
+                                </a>
+                            </h4>
+                            <p class="text-label-sm text-on-surface-variant line-clamp-2">심해를 탐험하며 숨겨진 비밀을 밝혀내는 3D 액션 어드벤처 게임.</p>
                         </div>
-                    </a>
-                    <div class="p-6">
-                        <div class="flex gap-2 mb-3">
-                            <span
-                                class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded uppercase">Unity</span>
-                            <span
-                                class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase">2024 졸업작품</span>
-                        </div>
-                        <h4 class="font-title-md text-primary mb-2">
-                            <a href="https://pcugame.github.io/exhibitions/5" target="_blank" rel="noopener noreferrer" class="hover:underline">
-                                Project: Diver
-                            </a>
-                        </h4>
-                        <p class="text-label-sm text-on-surface-variant line-clamp-2">심해를 탐험하며 숨겨진 비밀을 밝혀내는 3D 액션 어드벤처 게임.</p>
                     </div>
                 </div>
                 <!-- Project 3 -->
-                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20">
-                    <a href="https://pcugame.github.io/exhibitions/4" target="_blank" rel="noopener noreferrer" class="block aspect-video relative overflow-hidden">
-                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            data-alt="기사도 정신을 바탕으로 진행되는 3D 액션 어드벤처 게임 기사도에 대하여! 포스터"
-                            src="기사도에 대하여.png">
-                        <div
-                            class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="material-symbols-outlined text-white text-[48px]">play_circle</span>
+                <div class="tilt-card group bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20 relative">
+                    <div class="sheen-overlay"></div>
+                    <div class="tilt-inner w-full h-full">
+                        <a href="https://pcugame.github.io/exhibitions/4" target="_blank" rel="noopener noreferrer" class="block aspect-video relative overflow-hidden">
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                data-alt="기사도 정신을 바탕으로 진행되는 3D 액션 어드벤처 게임 기사도에 대하여! 포스터"
+                                src="기사도에 대하여.png">
+                            <div
+                                class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white text-[48px]">play_circle</span>
+                            </div>
+                        </a>
+                        <div class="p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span
+                                    class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded uppercase">Unity</span>
+                                <span
+                                    class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase">2023 졸업작품</span>
+                            </div>
+                            <h4 class="font-title-md text-primary mb-2">
+                                <a href="https://pcugame.github.io/exhibitions/4" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                                    Project: 기사도에 대하여!
+                                </a>
+                            </h4>
+                            <p class="text-label-sm text-on-surface-variant line-clamp-2">기사도 정신을 바탕으로 흥미진진한 모험을 펼치는 3D 액션 어드벤처 게임.</p>
                         </div>
-                    </a>
-                    <div class="p-6">
-                        <div class="flex gap-2 mb-3">
-                            <span
-                                class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded uppercase">Unity</span>
-                            <span
-                                class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase">2023 졸업작품</span>
-                        </div>
-                        <h4 class="font-title-md text-primary mb-2">
-                            <a href="https://pcugame.github.io/exhibitions/4" target="_blank" rel="noopener noreferrer" class="hover:underline">
-                                Project: 기사도에 대하여!
-                            </a>
-                        </h4>
-                        <p class="text-label-sm text-on-surface-variant line-clamp-2">기사도 정신을 바탕으로 흥미진진한 모험을 펼치는 3D 액션 어드벤처 게임.</p>
                     </div>
                 </div>
             </div>
@@ -543,9 +651,7 @@
                             <span class="material-symbols-outlined text-secondary">location_on</span>
                             <div>
                                 <p class="font-bold text-primary">위치</p>
-                                <p class="text-label-sm text-on-surface-variant"><span
-                                        style="color: rgb(102, 102, 102); font-family: &quot;Nanum Gothic&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: -0.6px;">&nbsp;대전광역시
-                                        서구 배재로 155-40 배재대학교 국제교류관 126호 입학처</span></p>
+                                <p class="text-label-sm text-on-surface-variant leading-relaxed">대전광역시 서구 배재로 155-40 <span class="block">배재대학교 정보과학관(C동) 102호 (학과사무실)</span></p>
                             </div>
                         </div>
 
@@ -553,7 +659,7 @@
                             <span class="material-symbols-outlined text-secondary">call</span>
                             <div>
                                 <p class="font-bold text-primary">전화</p>
-                                <p class="text-label-sm text-on-surface-variant">042-520-1885</p>
+                                <p class="text-label-sm text-on-surface-variant">042-520-5689</p>
                             </div>
                         </div>
                     </div>
@@ -655,9 +761,82 @@
             </div>
         </div>
     </footer>
+    <!-- Floating Cyberpunk Terminal Button -->
+    <button id="terminal-toggle-btn" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-slate-900 border border-secondary text-secondary rounded-full flex items-center justify-center pulse-neon hover:scale-110 active:scale-95 transition-all shadow-lg select-none animate-bounce" title="Developer Console" style="animation-duration: 3s;">
+        <span class="material-symbols-outlined text-[28px]">terminal</span>
+    </button>
+
+    <!-- Slide-out Cyberpunk Developer Console -->
+    <div id="cyber-console" class="fixed bottom-24 right-6 z-50 w-[380px] md:w-[420px] h-[480px] cyber-terminal rounded-2xl overflow-hidden flex flex-col transition-all duration-300 transform scale-90 translate-y-10 opacity-0 pointer-events-none scanlines text-white">
+        <!-- Console Header -->
+        <div class="bg-slate-950/90 px-4 py-3 border-b border-secondary/30 flex justify-between items-center select-none">
+            <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                <span class="text-secondary font-mono text-[11px] font-bold ml-2">GAME ENGINE DEV-MODE v1.0.8</span>
+            </div>
+            <button id="console-close-btn" class="text-secondary/50 hover:text-secondary hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-[18px]">close</span>
+            </button>
+        </div>
+
+        <!-- Console Tabs -->
+        <div class="bg-slate-900/60 border-b border-secondary/20 flex text-[11px] font-mono select-none">
+            <button id="tab-monitor-btn" class="px-4 py-2 border-r border-secondary/20 bg-slate-950/30 text-secondary border-b-2 border-b-secondary font-bold">SYSTEM_MONITOR</button>
+            <button id="tab-clicker-btn" class="px-4 py-2 border-r border-secondary/20 text-secondary/60 hover:text-secondary">CODE_CLICKER_GAME</button>
+        </div>
+
+        <!-- Tab 1: System Monitor Content -->
+        <div id="panel-monitor" class="flex-1 p-4 overflow-hidden flex flex-col font-mono text-[12px] space-y-4 text-green-400">
+            <div class="grid grid-cols-2 gap-2 text-secondary/80 bg-slate-950/50 p-3 rounded-lg border border-secondary/10">
+                <div>FPS: <span id="stat-fps" class="text-green-400 font-bold">60.0</span></div>
+                <div>Draw Calls: <span id="stat-drawcalls" class="text-green-400 font-bold">142</span></div>
+                <div>VRAM: <span id="stat-vram" class="text-green-400 font-bold">4.2 GB / 16 GB</span></div>
+                <div>Engine State: <span class="text-green-400 font-bold">RUNNING</span></div>
+            </div>
+            <div class="flex-1 flex flex-col space-y-1 overflow-hidden">
+                <p class="text-secondary/50 text-[10px] uppercase font-bold select-none">[Real-time Web Engine Log]</p>
+                <div id="terminal-logs" class="flex-1 space-y-1 text-[11px] font-mono leading-relaxed overflow-y-auto terminal-scroll text-green-400/90 pr-1">
+                    <!-- Logs will be dynamically appended here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: Clicker Game Content -->
+        <div id="panel-clicker" class="flex-1 p-4 flex flex-col justify-between font-mono text-[12px] text-cyan-400 hidden">
+            <div class="bg-slate-950/50 p-3 rounded-lg border border-secondary/10 text-center select-none">
+                <p class="text-secondary/50 text-[10px]">COMPILED LINES OF CODE</p>
+                <h4 class="text-[24px] font-bold text-secondary my-1" id="clicker-count">0 <span class="text-[11px] text-secondary/60">LoC</span></h4>
+                <p class="text-secondary/60 text-[9px]" id="clicker-persec">Auto-coder: +0 LoC / sec</p>
+            </div>
+            
+            <button id="clicker-main-btn" class="w-full py-5 my-2.5 bg-secondary/10 hover:bg-secondary/20 border border-secondary text-secondary font-bold text-[13px] rounded-xl hover:shadow-[0_0_15px_rgba(60,215,255,0.4)] active:scale-95 transition-all select-none uppercase tracking-wide">
+                Compile Source Code!
+            </button>
+
+            <div class="space-y-2 flex-1 max-h-[160px] overflow-y-auto terminal-scroll pr-1">
+                <!-- Upgrade 1 -->
+                <button id="upgrade-auto-btn" class="w-full p-2 bg-slate-900/80 border border-secondary/20 rounded flex justify-between items-center hover:border-secondary transition-colors select-none text-[11px] text-left">
+                    <div class="flex-1">
+                        <p class="font-bold text-secondary">🤖 Hire Auto-Coder AI</p>
+                        <p class="text-[9px] text-secondary/60">+1 LoC/sec</p>
+                    </div>
+                    <span class="bg-secondary/10 text-secondary px-2 py-1 rounded" id="upgrade-auto-cost">15 LoC</span>
+                </button>
+                <!-- Upgrade 2 -->
+                <button id="upgrade-gpu-btn" class="w-full p-2 bg-slate-900/80 border border-secondary/20 rounded flex justify-between items-center hover:border-secondary transition-colors select-none text-[11px] text-left">
+                    <div class="flex-1">
+                        <p class="font-bold text-secondary">🚀 RTX 5090 cluster</p>
+                        <p class="text-[9px] text-secondary/60">+10 LoC/sec</p>
+                    </div>
+                    <span class="bg-secondary/10 text-secondary px-2 py-1 rounded" id="upgrade-gpu-cost">100 LoC</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="main.js"></script>
-
-
 </body>
 
 </html>

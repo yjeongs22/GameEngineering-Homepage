@@ -4,18 +4,141 @@
 }
 
 .hero-gradient {
-    background: linear-gradient(to right, rgba(0, 23, 54, 0.9) 0%, rgba(0, 23, 54, 0.4) 100%);
-}
-
-.bento-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.bento-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(to right, rgba(0, 23, 54, 0.92) 0%, rgba(0, 23, 54, 0.4) 100%);
 }
 
 .text-glow {
-    text-shadow: 0 0 10px rgba(60, 215, 255, 0.5);
+    text-shadow: 0 0 12px rgba(60, 215, 255, 0.6);
+}
+
+/* --- 3D Parallax Card Tilt --- */
+.tilt-card {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+}
+
+.tilt-inner {
+    transform: translateZ(30px);
+    transform-style: preserve-3d;
+}
+
+.tilt-inner-deep {
+    transform: translateZ(50px);
+}
+
+/* Card Light Sheen/Reflection Overlay */
+.sheen-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle 120px at var(--sheen-x, 0) var(--sheen-y, 0), rgba(255, 255, 255, 0.12) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tilt-card:hover .sheen-overlay {
+    opacity: 1;
+}
+
+/* --- Technical Gaming Crosshair Cursor --- */
+@media (min-width: 768px) {
+    body, a, button, [role="button"] {
+        cursor: none !important;
+    }
+    
+    .custom-cursor-dot {
+        width: 8px;
+        height: 8px;
+        background-color: rgb(60, 215, 255);
+        box-shadow: 0 0 10px rgb(60, 215, 255);
+        border-radius: 50%;
+        position: fixed;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 99999;
+    }
+    
+    .custom-cursor-circle {
+        width: 36px;
+        height: 36px;
+        border: 1.5px solid rgba(60, 215, 255, 0.4);
+        box-shadow: 0 0 6px rgba(60, 215, 255, 0.2);
+        border-radius: 50%;
+        position: fixed;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 99998;
+        transition: width 0.2s, height 0.2s, border-color 0.2s, background-color 0.2s;
+    }
+    
+    /* Hover state for links */
+    body.cursor-hover .custom-cursor-circle {
+        width: 48px;
+        height: 48px;
+        border-color: rgb(240, 60, 150);
+        background-color: rgba(240, 60, 150, 0.05);
+        box-shadow: 0 0 12px rgba(240, 60, 150, 0.4);
+        border-style: dashed;
+        animation: spin 6s linear infinite;
+    }
+}
+
+@keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* --- Floating Cyberpunk Console & Terminal --- */
+.cyber-terminal {
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    background: linear-gradient(135deg, rgba(10, 18, 30, 0.95) 0%, rgba(5, 10, 20, 0.98) 100%);
+    box-shadow: 0 0 30px rgba(60, 215, 255, 0.25), inset 0 0 15px rgba(60, 215, 255, 0.05);
+    border: 1px solid rgba(60, 215, 255, 0.3);
+    text-shadow: 0 0 5px rgba(60, 215, 255, 0.5);
+}
+
+.terminal-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+.terminal-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+.terminal-scroll::-webkit-scrollbar-thumb {
+    background: rgba(60, 215, 255, 0.3);
+    border-radius: 3px;
+}
+.terminal-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(60, 215, 255, 0.5);
+}
+
+/* Cyber Terminal Scanlines effect */
+.scanlines {
+    position: relative;
+    overflow: hidden;
+}
+.scanlines::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 4px, 6px 100%;
+    pointer-events: none;
+}
+
+/* Neon Pulse Animation for floating button */
+.pulse-neon {
+    animation: neon-pulse 2s infinite alternate;
+}
+
+@keyframes neon-pulse {
+    from {
+        box-shadow: 0 0 8px rgba(60, 215, 255, 0.4), inset 0 0 4px rgba(60, 215, 255, 0.2);
+    }
+    to {
+        box-shadow: 0 0 20px rgba(60, 215, 255, 0.8), inset 0 0 10px rgba(60, 215, 255, 0.4);
+    }
 }
